@@ -1,9 +1,11 @@
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { useCreateStore, Provider } from '../store'
-import { supabase, setAuthCookie } from '../actions'
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useCreateStore, Provider } from '../store';
+import { supabase, setAuthCookie, updateDiscordUser } from '../actions';
+
+import Footer from '../components/Footer';
 
 import '../globals.css'
 
@@ -17,15 +19,19 @@ const App = ({ Component, pageProps } : AppProps) => {
       //setAuthCookie(event, session);
     });
     
-    const token = router.asPath.includes('#')
+    const token = router.asPath.includes('#');
     if(token) {
-      router.push('/')
+      router.push('/');
     }
 
     return () => {
         //authListener?.unsubscribe();
     };
   }, [router]);
+
+  useEffect(() => {
+    updateDiscordUser();
+  }, [])
 
   return (
     <>
@@ -42,11 +48,11 @@ const App = ({ Component, pageProps } : AppProps) => {
       <Provider createStore={store}>
         <div className="flex flex-col justify-between min-h-screen text-gray-700 dark:text-gray-50">
           <Component {...pageProps} />
+          {/*<Footer />*/}
         </div>
       </Provider>
     </>
   )
-
 }
 
 export default App;

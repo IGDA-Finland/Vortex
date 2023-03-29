@@ -15,7 +15,12 @@ const env = {
   "APP_IMAGE_WIDTH": "1200",
   "APP_IMAGE_HEIGHT": "630",
   "APP_SITE_NAME": "Vortex",
-  "API_URL": "https://vortex.vercel.app/api"
+  "API_URL": "http://localhost:3000/api",
+
+  "SUPABASE_REF": "qepbbrribkrkypytwssf",
+  "SUPABASE_URL": "https://qepbbrribkrkypytwssf.supabase.co",
+  "SUPABASE_PUBLIC_KEY": "",
+  "SUPABASE_PRIVATE_KEY": ""
 };
 
 const nextConfig = {
